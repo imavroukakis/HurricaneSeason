@@ -6,6 +6,7 @@ import hurricane.data.Hurricane;
 import hurricane.data.TrackRecord;
 import hurricane.util.Filter;
 import hurricane.util.HurricaneDataParser;
+import hurricane.util.Sort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +14,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Properties;
 
@@ -36,18 +36,7 @@ public class HurricaneSeason {
         Iterable<Hurricane> hurricaneIterable = Filter.onYear(hurricanes, year, false);
 
         for (Hurricane hurricane : hurricaneIterable) {
-            Collections.sort(hurricane.getTracks(), new Comparator<TrackRecord>() {
-                @Override
-                public int compare(TrackRecord trackRecordOne, TrackRecord trackRecordTwo) {
-                    if (trackRecordOne.getMaximumSustainedWind() > trackRecordTwo.getMaximumSustainedWind()) {
-                        return 1;
-                    } else if (trackRecordOne.getMaximumSustainedWind() == trackRecordTwo.getMaximumSustainedWind()) {
-                        return 0;
-                    } else {
-                        return -1;
-                    }
-                }
-            });
+            Collections.sort(hurricane.getTracks(), Sort.onMaxWindSpeed());
             TrackRecord trackRecord = Iterables.getLast(hurricane.getTracks());
             LOG.info(String.format("%-90s  Max wind: %.2f km/h (%d kt) recorded at %s",
                     hurricane,

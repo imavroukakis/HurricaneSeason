@@ -61,6 +61,15 @@ public class HurricaneParserTest {
 
     @Test
     public void filteringOnYear() {
+        List<Hurricane> hurricaneList = hurricaneYearStubList();
+        Iterable<Hurricane> filteredHurricanes = Filter.onYear(hurricaneList, 2009, false);
+        Iterator<Hurricane> hurricaneIterator = filteredHurricanes.iterator();
+        Assert.assertTrue(hurricaneIterator.hasNext());
+        Assert.assertEquals(2009, hurricaneIterator.next().getYear());
+        Assert.assertFalse(hurricaneIterator.hasNext());
+    }
+
+    private List<Hurricane> hurricaneYearStubList() {
         Hurricane hurricaneOne = new Hurricane();
         hurricaneOne.setYear(1989);
         Hurricane hurricaneTwo = new Hurricane();
@@ -68,11 +77,7 @@ public class HurricaneParserTest {
         List<Hurricane> hurricaneList = new ArrayList<Hurricane>();
         hurricaneList.add(hurricaneOne);
         hurricaneList.add(hurricaneTwo);
-        Iterable<Hurricane> filteredHurricanes = Filter.onYear(hurricaneList, 2009, false);
-        Iterator<Hurricane> hurricaneIterator = filteredHurricanes.iterator();
-        Assert.assertTrue(hurricaneIterator.hasNext());
-        Assert.assertEquals(2009, hurricaneIterator.next().getYear());
-        Assert.assertFalse(hurricaneIterator.hasNext());
+        return hurricaneList;
     }
 
     private HurricaneDataParser mockHurricaneDataParserInstance() throws IOException {
