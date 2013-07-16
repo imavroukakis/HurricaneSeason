@@ -51,7 +51,7 @@ public class HurricaneDataParser {
         }
     }
 
-    public List<Hurricane> parse() throws IllegalDataException {
+    public List<Hurricane> parseToList() throws IllegalDataException {
         List<Hurricane> hurricanes = new ArrayList<Hurricane>();
         Scanner scanner = newScannerInstance();
         try {

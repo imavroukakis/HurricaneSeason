@@ -10,6 +10,8 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -53,8 +55,24 @@ public class HurricaneParserTest {
     @Test
     public void parseData() throws IOException, IllegalDataException {
         HurricaneDataParser hurricaneDataParser = hurricaneDataParserInstance();
-        List<Hurricane> hurricanes = hurricaneDataParser.parse();
+        List<Hurricane> hurricanes = hurricaneDataParser.parseToList();
         Assert.assertFalse(hurricanes.isEmpty());
+    }
+
+    @Test
+    public void filteringOnYear() {
+        Hurricane hurricaneOne = new Hurricane();
+        hurricaneOne.setYear(1989);
+        Hurricane hurricaneTwo = new Hurricane();
+        hurricaneTwo.setYear(2009);
+        List<Hurricane> hurricaneList = new ArrayList<Hurricane>();
+        hurricaneList.add(hurricaneOne);
+        hurricaneList.add(hurricaneTwo);
+        Iterable<Hurricane> filteredHurricanes = Filter.onYear(hurricaneList, 2009, false);
+        Iterator<Hurricane> hurricaneIterator = filteredHurricanes.iterator();
+        Assert.assertTrue(hurricaneIterator.hasNext());
+        Assert.assertEquals(2009, hurricaneIterator.next().getYear());
+        Assert.assertFalse(hurricaneIterator.hasNext());
     }
 
     private HurricaneDataParser mockHurricaneDataParserInstance() throws IOException {
@@ -85,5 +103,4 @@ public class HurricaneParserTest {
         when(hurricane.getYear()).thenReturn(1949);
         return hurricane;
     }
-
 }

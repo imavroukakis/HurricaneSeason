@@ -5,6 +5,7 @@ import org.joda.time.DateTime;
 
 public class TrackRecord {
 
+    private static final double ONE_KMH_ONE_KNOT = 1.852;
     private DateTime date;
     private RecordIdentifier recordIdentifier;
     private SystemStatus systemStatus;
@@ -55,6 +56,10 @@ public class TrackRecord {
 
     public short getMaximumSustainedWind() {
         return maximumSustainedWind;
+    }
+
+    public double getMaximumSustainedWindInKmh() {
+        return maximumSustainedWind * ONE_KMH_ONE_KNOT;
     }
 
     public void setMaximumSustainedWind(short maximumSustainedWind) {
