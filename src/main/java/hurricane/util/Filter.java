@@ -1,8 +1,8 @@
-package hurricaneParser.util;
+package hurricane.util;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import hurricaneParser.data.Hurricane;
+import hurricane.data.Hurricane;
 
 import java.util.Collections;
 import java.util.Comparator;

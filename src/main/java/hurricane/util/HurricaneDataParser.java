@@ -1,7 +1,7 @@
-package hurricaneParser.util;
+package hurricane.util;
 
-import hurricaneParser.IllegalDataException;
-import hurricaneParser.data.*;
+import hurricane.IllegalDataException;
+import hurricane.data.*;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;

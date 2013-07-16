@@ -1,4 +1,4 @@
-package hurricaneParser;
+package hurricane;
 
 
 public class IllegalDataException extends Exception {

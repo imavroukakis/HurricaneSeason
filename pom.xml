@@ -47,5 +47,33 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-DdataFile=src/main/resources/hurdat-all.txt</argument>
+                        <argument>-DregexFile=src/main/resources/regex.properties</argument>
+                        <argument>-Dyear=2009</argument>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>hurricane.HurricaneSeason</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>

@@ -1,4 +1,4 @@
-package hurricaneParser.data;
+package hurricane.data;
 
 
 import org.joda.time.DateTime;

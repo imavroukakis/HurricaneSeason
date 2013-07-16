@@ -1,9 +1,9 @@
-package hurricaneParser.util;
+package hurricane.util;
 
 
-import hurricaneParser.IllegalDataException;
-import hurricaneParser.data.Basin;
-import hurricaneParser.data.Hurricane;
+import hurricane.IllegalDataException;
+import hurricane.data.Basin;
+import hurricane.data.Hurricane;
 import org.junit.Assert;
 import org.junit.Test;
 

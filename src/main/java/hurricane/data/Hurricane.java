@@ -1,4 +1,4 @@
-package hurricaneParser.data;
+package hurricane.data;
 
 
 import java.util.List;
